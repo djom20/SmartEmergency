@@ -1,7 +1,5 @@
 <?php
     $config = Config::singleton();
-
-    //Folders' Direction
     $config->set('controllersFolder', 'Controllers/');
     $config->set('modelsFolder', 'Models/');
     $config->set('xmlFolder', 'Models/xml/');
@@ -10,14 +8,36 @@
     $config->set('templatesFolder', 'Templates/');
     
     $config->set('Template', 'default.php');
+    $config->set('Environment', 'production');
 
-    //Vars URL
-    $config->set('BaseUrl', 'http://localhost/pilotos/api');
-    // $config->set('BaseUrl', 'http://54.173.110.192/pilotos');
+    switch ($config->get('Environment')) {
+        case 'test':
+            $config->set('BaseUrl', 'http://localhost/api');
+            $config->set('driver', 'mysql');
+            $config->set('dbhost', 'localhost');
+            $config->set('dbname', 'altiviao_smartemergency');
+            $config->set('dbuser', 'root');
+            $config->set('dbpass', 'teamomiyalee19');
+            break;
+        case 'development':
+            $config->set('BaseUrl', 'http://smartemergency.altiviaot.com/api');
+            $config->set('driver', 'mysql');
+            $config->set('dbhost', 'localhost');
+            $config->set('dbname', 'altiviao_smartemergency');
+            $config->set('dbuser', 'root');
+            $config->set('dbpass', 'q6td9.9fmq3');
+            break;
+        case 'production':
+            $config->set('BaseUrl', 'http://smartemergency.altiviaot.com/api');
+            $config->set('driver', 'mysql');
+            $config->set('dbhost', 'localhost');
+            $config->set('dbname', 'altiviao_smartemergency');
+            $config->set('dbuser', 'root');
+            $config->set('dbpass', 'q6td9.9fmq3');
+            break;
+    }
 
-    //Data Base Configuration
-    $config->set('driver', 'mysql');
-    $config->set('dbhost', 'localhost');
-    $config->set('dbname', 'pilotos');
-    $config->set('dbuser', 'root');
-    $config->set('dbpass', 'q6td9.9fmq3');
+    $config->set('MDKey', 'ba79c7513cc983ae735fe9f66f100889');
+    $config->set('address', '127.0.0.1');
+    $config->set('port', '8586');
+?>
